@@ -158,7 +158,7 @@ OPTION=$(whiptail --title "OrangePi Build System" \
 	"1"   "Build Kernel only" \
 	"2"   "Build Module only" \
 	"3"   "Build Uboot" \
-	"4"   "Install Uboot" \
+	"4"   "Build Firmware only" \
 	3>&1 1>&2 2>&3)
 
 if [ $OPTION = "0" ]; then
@@ -179,7 +179,7 @@ elif [ $OPTION = "3" ]; then
 	exit 0
 elif [ $OPTION = "4" ]; then
 	cd $SCRIPTS
-	./uboot_update.sh 
+	./kernel_compile.sh "4"
 	exit 0
 else
 	whiptail --title "OrangePi Build System" \
