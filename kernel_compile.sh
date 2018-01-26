@@ -32,6 +32,12 @@ if [ $1 = "3" -o $1 = "1" ]; then
     make -C ${KERNEL} ARCH=arm CROSS_COMPILE=${TOOL} modules_install INSTALL_MOD_PATH=${OUTPUT}
 fi
 
+if [ $1 == "4" ]; then
+    echo -e "\e[1;31m Compile Firmware \e[0m"
+    make -C ${KERNEL} ARCH=arm CROSS_COMPILE=${TOOL} firmware
+    make -C ${KERNEL} ARCH=arm CROSS_COMPILE=${TOOL} firmware_install INSTALL_MOD_PATH=${OUTPUT}
+fi
+
 # Install zImage and modules 
 cp -rfa ${ROOT}/kernel/arch/arm/boot/zImage ${ROOT}/output/
 
